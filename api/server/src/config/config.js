@@ -6,20 +6,20 @@ const url = 'postgres://xuwxqejpjjsbhz:f5a753039e1f7f767993d8c012f280998de6f6bde
 module.exports = {
 
   // If using onine database
-  development: {
+  /*development: {
      use_env_variable: url,
      dialect: 'postgres'
      //process.env.DATABASE_URL   
      
-  },
+  },*/
 
-  /*development: {
+  development: {
     database: 'status',
     username: 'postgres',
-    password: 'qwerty',
+    password: process.env.DB_PASS,
     host: '127.0.0.1',
     dialect: 'postgres'
-  },*/
+  },
 
   test: {
     database: 'status',

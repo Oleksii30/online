@@ -4,8 +4,13 @@ import bodyParser from 'body-parser';
 import testRoutes from './server/src/routes/TestRoutes';
 import pg from 'pg'
 import database from './server/src/models';
+import Sequelize from 'sequelize'
 
 pg.defaults.ssl = true;
+
+/*let sequelize = new Sequelize(
+    'status','postgres','qwerty',{host:'127.0.0.1', dialect:'postgres'}
+);*/
 
 async function connection(){
     try {
@@ -25,7 +30,7 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-const port = process.env.PORT || 3005;
+const port = process.env.PORT || 8000;
 
 app.use('/api/v1/test', testRoutes);
 
