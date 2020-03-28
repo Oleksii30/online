@@ -1,16 +1,13 @@
 import config from 'dotenv';
 import express from 'express';
 import bodyParser from 'body-parser';
-import testRoutes from './server/src/routes/TestRoutes';
+import sensorRoutes from './server/src/routes/SensorsRoutes';
+import statusRoutes from './server/src/routes/StatusRoutes';
 import pg from 'pg'
 import database from './server/src/models';
-import Sequelize from 'sequelize'
+
 
 pg.defaults.ssl = true;
-
-/*let sequelize = new Sequelize(
-    'status','postgres','qwerty',{host:'127.0.0.1', dialect:'postgres'}
-);*/
 
 async function connection(){
     try {
@@ -30,9 +27,10 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-const port = process.env.PORT || 8000;
+const port = process.env.PORT || 8008;
 
-app.use('/api/v1/test', testRoutes);
+app.use('/api/sensor', sensorRoutes);
+app.use('/api/status', statusRoutes);
 
 // when a random route is inputed
 app.get('*', (req, res) => res.status(200).send({

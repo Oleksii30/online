@@ -1,14 +1,23 @@
 import database from '../models';
 
-class TestService {
-    static async getAllUserSensors(user) {
+class SensorService {
+    static async getAllUserSensors(owner) {
+        
         try {
             return await database.Sensor.findAll({
                 where: {
-                    owner: user
+                    owner: owner
                   },
-                  include: Statuses
+                  include: database.Status
             });
+        } catch (error) {
+            throw error;
+        }
+    }
+
+    static async addSensor(newSensor) {
+        try {
+            return await database.Sensor.create(newSensor);
         } catch (error) {
             throw error;
         }
