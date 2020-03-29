@@ -8,7 +8,7 @@ class SensorService {
                 where: {
                     owner: owner
                   },
-                  include: database.Status
+                  include: ['statuses']
             });
         } catch (error) {
             throw error;

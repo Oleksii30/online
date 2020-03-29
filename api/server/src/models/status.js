@@ -5,7 +5,7 @@ module.exports = (sequelize, DataTypes) => {
     status: DataTypes.STRING
   }, {});
   Status.associate = function(models) {
-    Status.belongsTo(models.Sensor)
+    Status.belongsTo(models.Sensor, {foreignKey: 'sensorId', as: 'sensor'})
   };
   return Status;
 };

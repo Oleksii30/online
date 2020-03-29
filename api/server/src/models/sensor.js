@@ -6,7 +6,7 @@ module.exports = (sequelize, DataTypes) => {
     owner: DataTypes.STRING
   }, {});
   Sensor.associate = function(models) {
-    Sensor.hasMany(models.Status)
+    Sensor.hasMany(models.Status, {as:'statuses'})
   };
   return Sensor;
 };
