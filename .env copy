@@ -1,0 +1,7 @@
+DB_NAME=name
+DB_USER=postgres
+DB_PASS=qwerty
+DB_PORT=5432
+DB_HOST=127.0.0.1
+DB_URI=postgres://jbqdnkeusufhhl:0872ac83baed8314c2cabed55bff6128f5bf969ef42b689f5e5c5def666a535c@ec2-3-91-112-166.compute-1.amazonaws.com:5432/dfsdlbi8qq76ov
+SECRET_KEY=any_secret
