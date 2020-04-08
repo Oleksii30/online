@@ -1,14 +1,12 @@
 import database from '../models';
 
 class SensorService {
-    static async getAllUserSensors(owner) {
+    static async getAllSensorsOfOwner(owner) {
         
         try {
             return await database.Sensor.findAll({
-                where: {
-                    owner: owner
-                  },
-                  include: ['statuses']
+                where: {owner: owner},
+                  //include: [database.Status]
             });
         } catch (error) {
             throw error;

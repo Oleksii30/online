@@ -1,11 +1,10 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   const Status = sequelize.define('Status', {
-    sensorId: DataTypes.INTEGER,
-    status: DataTypes.STRING
+   status: DataTypes.STRING
   }, {});
   Status.associate = function(models) {
-    Status.belongsTo(models.Sensor, {foreignKey: 'sensorId', as: 'sensor'})
+    Status.belongsTo(models.Sensor)
   };
   return Status;
 };

@@ -9,6 +9,15 @@ class StatusService {
             throw error;
         }
     }
+    static async getAllStatusesById(id){
+        try{
+            return await database.Status.findAll({
+                where: {SensorId: id},
+            });
+        }catch(error){
+            throw error
+        }
+    }
 }
 
 export default StatusService;

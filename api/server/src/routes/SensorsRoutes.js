@@ -7,6 +7,6 @@ router.route('/')
     .post(SensorController.addSensor)
     
 router.route('/:owner')
-    .get(SensorController.getUserSensors)
+    .get(SensorController.getSensors)
    
 export default router;

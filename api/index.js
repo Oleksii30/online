@@ -5,7 +5,7 @@ import sensorRoutes from './server/src/routes/SensorsRoutes';
 import statusRoutes from './server/src/routes/StatusRoutes';
 import pg from 'pg'
 import database from './server/src/models';
-
+import cors from 'cors'
 
 pg.defaults.ssl = true;
 
@@ -20,10 +20,27 @@ async function connection(){
 
 connection()
 
+
+/*database.Sensor.create({
+  type:'window',
+  address:"http//",
+  owner:'sherlock'
+}).then(sensor=>{
+  sensor.createStatus({
+    status:"online"
+  })
+}).then(result => console.log("Worked", result))*/
+
+/*database.Sensor.findAll({
+  where: {owner: "sherlock"},
+  include: [database.Status]
+}).then(sensors=>console.log(sensors))*/
+
 config.config();
 
 const app = express();
 
+app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 

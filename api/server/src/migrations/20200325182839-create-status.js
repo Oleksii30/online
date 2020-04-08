@@ -8,15 +8,9 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      sensorId: {
+      SensorId: {
         type: Sequelize.INTEGER,
-        references: {
-          model: {
-            tableName: 'Sensors',
-            },
-          key: 'id'
         },
-      },
       status: {
         type: Sequelize.STRING
       },
