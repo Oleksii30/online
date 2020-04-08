@@ -5,7 +5,7 @@
   "main": "index.js",
   "engines": {
     "node": "12.16.1",
-    "npm": "6.13.14"
+    "npm": "6.13.4"
   },
   "scripts": {
     "dev": "nodemon --exec babel-node ./api/index.js",
