@@ -4,9 +4,7 @@ import SensorController from '../controllers/SensorController';
 const router = Router();
 
 router.route('/')
-    .post(SensorController.addSensor)
-    
-router.route('/:owner')
+    .post(SensorController.addSensor) 
     .get(SensorController.getSensors)
    
 export default router;

@@ -35,7 +35,7 @@ if (config.environment === 'production') {
   sequelize = new Sequelize(
       config.database, config.username, config.password, config
       //config.use_env_variable
-      //'status','postgres','qwerty',{host:'127.0.0.1', dialect:'postgres'}
+     
   );
   
 }
