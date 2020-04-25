@@ -1,13 +1,13 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const Sensor = sequelize.define('Sensor', {
+  const sensor = sequelize.define('sensor', {
     type: DataTypes.STRING,
     room: DataTypes.STRING,
     address: DataTypes.STRING,
     owner: DataTypes.STRING
   }, {});
-  Sensor.associate = function(models) {
-    Sensor.hasMany(models.Status)
+  sensor.associate = function(models) {
+    sensor.hasMany(models.status)
   };
-  return Sensor;
+  return sensor;
 };

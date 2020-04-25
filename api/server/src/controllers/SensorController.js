@@ -14,6 +14,9 @@ class SensorController {
                 util.setError(400, "User is not authenticated");
                 return util.send(res);
             }
+            
+            const windowSensors = await requestToOtherServices('https://windows-protection-backend.herokuapp.com/api/sensor',token)
+            
             const userSensors = await SensorService.getAllSensors()
 
             util.setSuccess(200, 'Sensors retrieved', userSensors);

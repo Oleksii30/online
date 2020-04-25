@@ -59,11 +59,9 @@ class StatusController {
     }
 
     static async getStatus(req, res){
-        try{
-            console.log('request from', req.params.id)
+        try{            
             let id = req.params.id
-            let limit = req.query.limit === '0'? 1 : req.query.limit
-            console.log('limit',limit)            
+            let limit = req.query.limit === '0'? 1 : req.query.limit                      
             const statuses = await StatusService.getAllStatusesById(id,limit)
             
             const headers = {
@@ -80,8 +78,7 @@ class StatusController {
                 res
               }
               connections.push(newConnection)
-              console.log(connections.length)
-                          
+                                       
             req.on('close',()=>{
                   connections = connections.filter(c=>{return c.id != newConnection.id})
               })

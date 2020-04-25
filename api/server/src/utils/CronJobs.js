@@ -23,7 +23,7 @@ cron.schedule('*/10 * * * * *', async () => {
   });
 }
 function removeOldStatusesJob(){
-  cron.schedule('* * */2 * * *', async () => {
+  cron.schedule('0 */2 * * *', async () => {
     try {
       await StatusController.deleteStatusesForCronJob()
         }

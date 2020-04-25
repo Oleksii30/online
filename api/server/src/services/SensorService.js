@@ -5,7 +5,7 @@ class SensorService {
     static async getAllSensors() {
         
         try {
-            return await database.Sensor.findAll();
+            return await database.sensor.findAll();
         } catch (error) {
             throw error;
         }
@@ -14,7 +14,7 @@ class SensorService {
     static async getAllSensorsOfOwner(owner) {
         
         try {
-            return await database.Sensor.findAll({
+            return await database.sensor.findAll({
                 where: {owner: owner}                 
             });
         } catch (error) {
@@ -24,7 +24,7 @@ class SensorService {
 
     static async addSensor(newSensor) {
         try {
-            return await database.Sensor.create(newSensor);
+            return await database.sensor.create(newSensor);
         } catch (error) {
             throw error;
         }
