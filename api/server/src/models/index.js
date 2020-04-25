@@ -15,9 +15,10 @@ const db = {};
 let sequelize;
 if (config.environment === 'production') {
   sequelize = new Sequelize(
-      process.env[config.use_env_variable], config
+      //process.env[config.use_env_variable], config
+      config.use_env_variable
   );
-  sequelize = new Sequelize(
+  /*sequelize = new Sequelize(
       process.env.DB_NAME,
       process.env.DB_USER,
       process.env.DB_PASS, {
@@ -30,11 +31,11 @@ if (config.environment === 'production') {
         },
         logging: true
       }
-  );
+  );*/
 } else {
   sequelize = new Sequelize(
-      config.database, config.username, config.password, config
-      //config.use_env_variable
+      //config.database, config.username, config.password, config
+      config.use_env_variable
      
   );
   
