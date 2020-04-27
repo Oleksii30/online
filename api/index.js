@@ -60,7 +60,7 @@ app.listen(port, () => {
     console.log(`Server is running on PORT ${port}`);
 });
 
-//cronJobs.addStatusesJob()
-//cronJobs.removeOldStatusesJob()
+cronJobs.addStatusesJob()
+cronJobs.removeOldStatusesJob()
 
 export default app;
