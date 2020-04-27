@@ -7,18 +7,13 @@ const util = new Util();
 class SensorController {
     static async getSensors(req, res) {
         
-        try {
-            let token = req.headers.authorization
-            const user = await requestToOtherServices('https://security-system-auth.herokuapp.com/api/verifying/',token)
-            if (!user){
-                util.setError(400, "User is not authenticated");
-                return util.send(res);
-            }
+        try {           
             
-            const windowSensors = await requestToOtherServices('https://windows-protection-backend.herokuapp.com/api/sensor',token)
-            
-            const userSensors = await SensorService.getAllSensors()
+            //const windowSensors = await requestToOtherServices('https://windows-protection-backend.herokuapp.com/api/sensor',req.token)
+            //console.log(windowSensors)
 
+            const userSensors = await SensorService.getAllSensors()
+          
             util.setSuccess(200, 'Sensors retrieved', userSensors);
             return util.send(res);
 
@@ -30,7 +25,7 @@ class SensorController {
 
     static async addSensor(req, res) {
                 
-    if (!req.body.type || !req.body.address || !req.body.owner || !req.body.room) {
+    if (!req.body.type || !req.body.address || !req.body.name || !req.body.room) {
             util.setError(400, 'Please provide complete details');
             return util.send(res);
         }

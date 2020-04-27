@@ -13,7 +13,7 @@ class StatusController {
                 
                 console.log(connections.length)
                                                    
-                let connection = connections.find(c=> c.id == newStatus.SensorId)
+                let connection = connections.find(c=> c.id == newStatus.sensorId)
             if (connection){  
                 connection.res.write(`id:${createdStatus.id}\n`)
                 connection.res.write(`data: ${JSON.stringify(createdStatus)}\n\n`)
@@ -36,7 +36,7 @@ class StatusController {
       
     static async addStatus(req, res) {
                 
-    if (!req.body.SensorId || !req.body.status) {
+    if (!req.body.sensorId || !req.body.status) {
             util.setError(400, 'Please provide complete details');
             return util.send(res);
         }
@@ -47,7 +47,7 @@ class StatusController {
             util.setSuccess(201, 'Status Added!', createdStatus);
             util.send(res);
                                                
-            let connection = connections.find(c=> c.id == newStatus.SensorId)
+            let connection = connections.find(c=> c.id == newStatus.sensorId)
           
             connection.res.write(`id:${createdStatus.id}\n`)
             connection.res.write(`data: ${JSON.stringify(createdStatus)}\n\n`)
@@ -63,7 +63,7 @@ class StatusController {
             let id = req.params.id
             let limit = req.query.limit === '0'? 1 : req.query.limit                      
             const statuses = await StatusService.getAllStatusesById(id,limit)
-            
+                        
             const headers = {
                 'Content-Type': 'text/event-stream',
                 'Connection': 'keep-alive',
@@ -78,6 +78,7 @@ class StatusController {
                 res
               }
               connections.push(newConnection)
+              console.log('connections number',connections.length)
                                        
             req.on('close',()=>{
                   connections = connections.filter(c=>{return c.id != newConnection.id})

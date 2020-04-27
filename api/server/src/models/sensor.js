@@ -4,7 +4,7 @@ module.exports = (sequelize, DataTypes) => {
     type: DataTypes.STRING,
     room: DataTypes.STRING,
     address: DataTypes.STRING,
-    owner: DataTypes.STRING
+    name: DataTypes.STRING
   }, {});
   sensor.associate = function(models) {
     sensor.hasMany(models.status)

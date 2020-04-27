@@ -3,6 +3,7 @@ import request from 'request'
 function requestToOtherServices(url,token){
     return new Promise((resolve, reject)=>{
         const headers = {
+            'Content-Type': 'application/json',
             Authorization: token
         }
         request({url:url, headers:headers, json:true},(error, response)=>{

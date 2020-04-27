@@ -18,7 +18,7 @@ class StatusService {
                 where: {sensorId: id, 
                         createdAt:{
                             [Op.gt]:new Date(new Date()-limit * 1000 * 60)
-                        }                    
+                        }                   
                     }                
             });
         }catch(error){
@@ -29,7 +29,7 @@ class StatusService {
         try {
             await database.status.destroy({
                     where: {createdAt:{
-                        [Op.lt]:new Date(new Date()-120 * 1000 * 60)
+                        [Op.lt]:new Date(new Date()-30 * 1000 * 60)
                     } 
                   }      
                 })                              

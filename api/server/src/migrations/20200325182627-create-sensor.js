@@ -19,7 +19,7 @@ module.exports = {
       address: {
         type: Sequelize.STRING
       },
-      owner: {
+      name: {
         type: Sequelize.STRING
       },
       createdAt: {

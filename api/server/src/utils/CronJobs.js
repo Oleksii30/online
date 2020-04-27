@@ -9,9 +9,9 @@ cron.schedule('*/10 * * * * *', async () => {
     let sensors = await SensorController.getSensorsForCronJob()
     for (let sensor of sensors){
       let status = Math.random() <= 0.8? 'online' : 'offline'
-      let SensorId = sensor.dataValues.id
+      let sensorId = sensor.dataValues.id
       let newStatus = {
-        SensorId:SensorId,
+        sensorId:sensorId,
         status:status
       }
       await StatusController.addStatusForCronJob(newStatus)     
@@ -23,7 +23,7 @@ cron.schedule('*/10 * * * * *', async () => {
   });
 }
 function removeOldStatusesJob(){
-  cron.schedule('0 */2 * * *', async () => {
+  cron.schedule('*/30 * * * *', async () => {
     try {
       await StatusController.deleteStatusesForCronJob()
         }

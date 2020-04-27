@@ -30,6 +30,18 @@ class SensorService {
         }
     }
 
+    static async deleteAllSensorsOfType(type) {
+        try {            
+            await database.sensor.destroy({
+                    where: { type: type }
+                });
+                            
+            return null;
+        } catch (error) {
+            throw error;
+        }
+    }
+
 
    /* static async getAllSensors() {
         try {
@@ -76,21 +88,7 @@ class SensorService {
         }
     }
 
-    static async deleteSensor(id) {
-        try {
-            const sensorToDelete = await database.Sensor.findOne({ where: { id: Number(id) } });
-
-            if (sensorToDelete) {
-                const deletedTest = await database.Sensor.destroy({
-                    where: { id: Number(id) }
-                });
-                return deletedSensor;
-            }
-            return null;
-        } catch (error) {
-            throw error;
-        }
-    }*/
+    */
 }
 
 export default SensorService;
