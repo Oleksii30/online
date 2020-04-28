@@ -32,7 +32,7 @@ class StatusService {
         try {
             await database.status.destroy({
                     where: {createdAt:{
-                        [Op.lt]:new Date(new Date()-30 * 1000 * 60)
+                        [Op.lt]:new Date(new Date()-15 * 1000 * 60)
                     } 
                   }      
                 })                              
