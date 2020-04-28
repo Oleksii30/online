@@ -19,7 +19,10 @@ class StatusService {
                         createdAt:{
                             [Op.gt]:new Date(new Date()-limit * 1000 * 60)
                         }                   
-                    }                
+                    },
+                order: [
+                        ['createdAt', 'ASC']                        
+                    ]                
             });
         }catch(error){
             throw error

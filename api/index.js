@@ -21,23 +21,6 @@ async function connection(){
 
 connection()
 
-
-/*database.Sensor.create({
-  type:'window',
-  room:"living-room",
-  address:"http//",
-  owner:'sherlock'
-}).then(sensor=>{
-  sensor.createStatus({
-    status:"online"
-  })
-}).then(result => console.log("Worked", result))
-
-database.Sensor.findAll({
-  where: {owner: "sherlock"},
-  include: [database.Status]
-}).then(sensors=>console.log(sensors))*/
-
 config.config();
 
 const app = express();
@@ -60,7 +43,7 @@ app.listen(port, () => {
     console.log(`Server is running on PORT ${port}`);
 });
 
-cronJobs.addStatusesJob()
-cronJobs.removeOldStatusesJob()
+//cronJobs.addStatusesJob()
+//cronJobs.removeOldStatusesJob()
 
 export default app;
