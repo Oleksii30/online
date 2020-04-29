@@ -1,18 +1,12 @@
 import requestToOtherServices from '../utils/RequestToOtherServices'
-import Util from '../utils/Utils';
-import SensorService from '../services/SensorService';
 
-const util = new Util();
-
-const getWindowSensors = async(req, res, next) => {
+const getWindowSensors = async(req) => {
     try {
         
         let windowSensors = await requestToOtherServices('https://windows-protection-backend.herokuapp.com/api/sensor',req.token)
-       if (!windowSensors) {
-            throw new Error()
-        }
-        await SensorService.deleteAllSensorsOfType('window')
-
+        req.windowSensors = []
+              
+        if (windowSensors.message === 'Sensors retrieved'){
         for (let sensor of windowSensors.data){
             let newSensor = {
                 id: sensor.id,
@@ -21,13 +15,12 @@ const getWindowSensors = async(req, res, next) => {
                 address:'',
                 name: sensor.WindowName
             }
-            await SensorService.addSensor(newSensor)           
+            req.windowSensors.push(newSensor)                   
+            }
         }
-       
-        next()
+               
     } catch (error) {
-        util.setError(400, "No window sensors");
-        return util.send(res);
+       console.log('error in windows',error)
     }
 }
 

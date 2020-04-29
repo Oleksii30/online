@@ -30,10 +30,18 @@ class SensorService {
         }
     }
 
-    static async deleteAllSensorsOfType(type) {
+    static async addArrayOfSensors(sensors) {
+        try {
+            return await database.sensor.bulkCreate(sensors)
+        } catch (error) {
+            throw error;
+        }
+    }
+
+    static async deleteAllSensors() {
         try {            
             await database.sensor.destroy({
-                    where: { type: type }
+                    where: {}
                 });
                             
             return null;

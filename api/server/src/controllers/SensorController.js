@@ -1,19 +1,19 @@
 import SensorService from '../services/SensorService';
 import Util from '../utils/Utils';
-import requestToOtherServices from '../utils/RequestToOtherServices'
+require('dotenv').config();
 
 const util = new Util();
 
 class SensorController {
     static async getSensors(req, res) {
-        
+                
         try {           
-            
-            //const windowSensors = await requestToOtherServices('https://windows-protection-backend.herokuapp.com/api/sensor',req.token)
-            //console.log(windowSensors)
+                       
+            await SensorService.deleteAllSensors()           
 
-            const userSensors = await SensorService.getAllSensors()
-          
+            const userSensors = [...req.windowSensors, ...req.movementSensors]
+            await SensorService.addArrayOfSensors(userSensors)
+                      
             util.setSuccess(200, 'Sensors retrieved', userSensors);
             return util.send(res);
 

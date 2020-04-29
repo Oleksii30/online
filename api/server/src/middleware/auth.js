@@ -8,7 +8,6 @@ const auth = async(req, res, next) => {
 
         let token = req.headers.authorization
         const user = await requestToOtherServices('https://security-system-auth.herokuapp.com/api/verifying/user',token)
-       console.log('user', user)
         if (!user) {
             throw new Error()
         }
