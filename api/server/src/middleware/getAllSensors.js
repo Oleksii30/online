@@ -3,9 +3,9 @@ import getWindowSensors from './getWindowSensors'
 
 const getAllSensors = async(req, res, next) => {
     try{ 
-        Promise.all(
-            await getMovementSensors(req),
-            await getWindowSensors(req)
+       await Promise.all(
+            getMovementSensors(req),
+            getWindowSensors(req)
         )        
         next()
     } catch (error) {
